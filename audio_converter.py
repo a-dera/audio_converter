@@ -3,7 +3,7 @@
 MP4 to MP3 Converter - Script autonome
 Convertit tous les fichiers MP4 d'un dossier en MP3 haute qualité (320 kbps)
 
-Auteur: Amédée / ELYA DATA INTELLIGENCE
+Auteur: A. DERA
 Prérequis: FFmpeg doit être installé sur le système
     - Ubuntu/Debian: sudo apt install ffmpeg
     - macOS: brew install ffmpeg

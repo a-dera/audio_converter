@@ -1,0 +1,10 @@
+# Audio Converter - Python Dependencies
+
+# YouTube download and search
+yt-dlp>=2023.12.30
+
+# Optional: Progress bars (if you want to add them later)
+# tqdm>=4.66.0
+
+# Note: FFmpeg is a system dependency, not a Python package
+# Install it separately (see README.md)

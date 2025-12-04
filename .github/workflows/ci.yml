@@ -1,0 +1,82 @@
+# GitHub Actions CI/CD (optionnel)
+# Décommentez ce fichier si vous voulez activer l'intégration continue
+
+name: CI/CD
+
+on:
+  push:
+    branches: [ main, develop ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  test:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [ubuntu-latest, windows-latest, macos-latest]
+        python-version: ['3.8', '3.9', '3.10', '3.11', '3.12']
+    
+    steps:
+    - uses: actions/checkout@v4
+    
+    - name: Set up Python ${{ matrix.python-version }}
+      uses: actions/setup-python@v4
+      with:
+        python-version: ${{ matrix.python-version }}
+    
+    - name: Install FFmpeg (Ubuntu)
+      if: runner.os == 'Linux'
+      run: sudo apt-get update && sudo apt-get install -y ffmpeg
+    
+    - name: Install FFmpeg (macOS)
+      if: runner.os == 'macOS'
+      run: brew install ffmpeg
+    
+    - name: Install FFmpeg (Windows)
+      if: runner.os == 'Windows'
+      uses: FedericoCarboni/setup-ffmpeg@v2
+    
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install -r requirements.txt
+        pip install black flake8 pytest
+    
+    - name: Lint with flake8
+      run: |
+        # Stop build if there are Python syntax errors or undefined names
+        flake8 . --count --select=E9,F63,F7,F82 --show-source --statistics
+        # Exit-zero treats all errors as warnings
+        flake8 . --count --exit-zero --max-complexity=10 --max-line-length=100 --statistics
+    
+    - name: Check code formatting with black
+      run: black --check *.py
+    
+    - name: Verify FFmpeg installation
+      run: ffmpeg -version
+    
+    - name: Verify yt-dlp installation
+      run: yt-dlp --version
+    
+    # Décommentez si vous ajoutez des tests
+    # - name: Run tests
+    #   run: pytest tests/ -v
+
+  # Optionnel : Release automatique
+  # release:
+  #   needs: test
+  #   runs-on: ubuntu-latest
+  #   if: github.event_name == 'push' && startsWith(github.ref, 'refs/tags/v')
+  #   
+  #   steps:
+  #   - uses: actions/checkout@v4
+  #   
+  #   - name: Create Release
+  #     uses: softprops/action-gh-release@v1
+  #     with:
+  #       files: |
+  #         audio_converter.py
+  #         youtube_search.py
+  #         download_mp3.py
+  #       generate_release_notes: true

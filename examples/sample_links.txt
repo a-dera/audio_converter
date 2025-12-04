@@ -1,0 +1,22 @@
+# Liens YouTube - Exemple
+# Format: un lien par ligne
+# Les lignes commençant par # sont ignorées
+
+# Audiobooks
+https://www.youtube.com/watch?v=dQw4w9WgXcQ
+https://www.youtube.com/watch?v=9bZkp7q19f0
+
+# Musique
+https://www.youtube.com/watch?v=kJQP7kiw5Fk
+
+# Podcasts
+https://www.youtube.com/watch?v=jNQXAC9IVRw
+
+# Vous pouvez organiser vos liens avec des commentaires
+# pour mieux vous y retrouver
+
+# Mix relaxation
+https://www.youtube.com/watch?v=5qap5aO4i9A
+
+# NON TROUVÉ: exemple_fichier.mp4
+# ^ Ce format est généré automatiquement par youtube_search.py

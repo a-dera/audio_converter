@@ -4,98 +4,98 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![FFmpeg Required](https://img.shields.io/badge/FFmpeg-required-red.svg)](https://ffmpeg.org/)
 
-**Suite d'outils Python pour la conversion et le téléchargement audio/vidéo**
+**Python toolkit suite for audio/video conversion and download**
 
-Collection de scripts CLI professionnels pour :
-- 🎬 Convertir des MP4 en MP3 haute qualité (parallèle)
-- 🔍 Rechercher des vidéos YouTube depuis des noms de fichiers
-- ⬇️ Télécharger des MP3 depuis YouTube en batch
+Professional CLI scripts collection for:
+- 🎬 Converting MP4 to high-quality MP3 (parallel processing)
+- 🔍 Searching YouTube videos from file names
+- ⬇️ Downloading MP3 from YouTube in batch mode
 
 ---
 
-## 📋 Table des matières
+## 📋 Table of Contents
 
-- [Fonctionnalités](#-fonctionnalités)
-- [Prérequis](#-prérequis)
+- [Features](#-features)
+- [Prerequisites](#-prerequisites)
 - [Installation](#-installation)
-- [Utilisation](#-utilisation)
-  - [Convertir MP4 → MP3](#1-convertir-mp4--mp3)
-  - [Rechercher sur YouTube](#2-rechercher-sur-youtube)
-  - [Télécharger depuis YouTube](#3-télécharger-depuis-youtube)
-- [Workflow complet](#-workflow-complet)
-- [Configuration avancée](#-configuration-avancée)
+- [Usage](#-usage)
+  - [Convert MP4 → MP3](#1-convert-mp4--mp3)
+  - [Search on YouTube](#2-search-on-youtube)
+  - [Download from YouTube](#3-download-from-youtube)
+- [Complete Workflow](#-complete-workflow)
+- [Advanced Configuration](#-advanced-configuration)
 - [Contributing](#-contributing)
 - [License](#-license)
 
 ---
 
-## ✨ Fonctionnalités
+## ✨ Features
 
-### 🎬 **audio_converter.py** - Conversion MP4 → MP3
-- ✅ Conversion batch haute qualité (320 kbps par défaut)
-- ✅ Traitement parallèle ultra-rapide (jusqu'à 50 threads)
-- ✅ Préservation des métadonnées
-- ✅ Gestion intelligente des erreurs
-- ✅ Interface CLI intuitive
+### 🎬 **audio_converter.py** - MP4 → MP3 Conversion
+- ✅ High-quality batch conversion (320 kbps default)
+- ✅ Ultra-fast parallel processing (up to 50 threads)
+- ✅ Metadata preservation
+- ✅ Intelligent error handling
+- ✅ Intuitive CLI interface
 
-### 🔍 **youtube_search.py** - Recherche YouTube
-- ✅ Recherche automatique depuis noms de fichiers MP4
-- ✅ Nettoyage intelligent des noms (emojis, caractères spéciaux)
-- ✅ Génération de fichiers de liens
-- ✅ Rapport détaillé (trouvés/non trouvés)
-- ✅ Rate limiting intégré
+### 🔍 **youtube_search.py** - YouTube Search
+- ✅ Automatic search from MP4 file names
+- ✅ Intelligent name cleanup (emojis, special characters)
+- ✅ Link file generation
+- ✅ Detailed report (found/not found)
+- ✅ Built-in rate limiting
 
-### ⬇️ **download_mp3.py** - Téléchargement YouTube
-- ✅ Téléchargement batch depuis fichier de liens
-- ✅ Meilleure qualité audio disponible
-- ✅ Gestion automatique des échecs
-- ✅ Sauvegarde des liens échoués
-- ✅ Support multi-formats YouTube
+### ⬇️ **download_mp3.py** - YouTube Download
+- ✅ Batch download from link file
+- ✅ Best available audio quality
+- ✅ Automatic failure handling
+- ✅ Failed links backup
+- ✅ Multi-format YouTube support
 
 ---
 
-## 🔧 Prérequis
+## 🔧 Prerequisites
 
-### Systèmes supportés
+### Supported Systems
 - ✅ Windows 10/11
 - ✅ macOS 10.15+
 - ✅ Linux (Ubuntu 20.04+, Debian, Fedora, Arch)
 
-### Dépendances système
+### System Dependencies
 
-#### **FFmpeg** (obligatoire pour audio_converter.py)
+#### **FFmpeg** (required for audio_converter.py)
 
-**Ubuntu/Debian :**
+**Ubuntu/Debian:**
 ```bash
 sudo apt update
 sudo apt install ffmpeg
 ```
 
-**macOS :**
+**macOS:**
 ```bash
 brew install ffmpeg
 ```
 
-**Windows :**
-1. Télécharger depuis [ffmpeg.org/download.html](https://ffmpeg.org/download.html)
-2. Extraire et ajouter au PATH système
-3. Vérifier : `ffmpeg -version`
+**Windows:**
+1. Download from [ffmpeg.org/download.html](https://ffmpeg.org/download.html)
+2. Extract and add to system PATH
+3. Verify: `ffmpeg -version`
 
-**Fedora :**
+**Fedora:**
 ```bash
 sudo dnf install ffmpeg
 ```
 
-**Arch Linux :**
+**Arch Linux:**
 ```bash
 sudo pacman -S ffmpeg
 ```
 
-#### **Python 3.8+** (obligatoire)
-Vérifier votre version :
+#### **Python 3.8+** (required)
+Check your version:
 ```bash
 python --version
-# ou
+# or
 python3 --version
 ```
 
@@ -103,21 +103,21 @@ python3 --version
 
 ## 📦 Installation
 
-### Installation rapide
+### Quick Install
 
 ```bash
-# Cloner le repo
+# Clone the repo
 git clone https://github.com/a-dera/audio_converter.git
 cd audio-converter
 
-# Installer les dépendances Python
+# Install Python dependencies
 pip install -r requirements.txt
 
-# Vérifier FFmpeg
+# Verify FFmpeg
 ffmpeg -version
 ```
 
-### Installation des dépendances Python uniquement
+### Python Dependencies Only
 
 ```bash
 pip install yt-dlp
@@ -125,317 +125,317 @@ pip install yt-dlp
 
 ---
 
-## 🚀 Utilisation
+## 🚀 Usage
 
-### 1. Convertir MP4 → MP3
+### 1. Convert MP4 → MP3
 
-**Conversion simple :**
+**Basic conversion:**
 ```bash
-python audio_converter.py /chemin/vers/videos
+python audio_converter.py /path/to/videos
 ```
 
-**Conversion avec options :**
+**Conversion with options:**
 ```bash
-# Dossier de sortie personnalisé
+# Custom output folder
 python audio_converter.py /videos -o /music
 
-# Bitrate personnalisé (256 kbps)
+# Custom bitrate (256 kbps)
 python audio_converter.py /videos -b 256k
 
 # Sample rate 48kHz
 python audio_converter.py /videos -r 48000
 
-# Mode séquentiel (désactive parallèle)
+# Sequential mode (disable parallel)
 python audio_converter.py /videos --sequential
 ```
 
-**Paramètres :**
-- `input_folder` : Dossier contenant les MP4 (obligatoire)
-- `-o, --output` : Dossier de sortie (défaut : `input_folder/mp3_output`)
-- `-b, --bitrate` : Débit audio (défaut : `320k`)
-- `-r, --sample-rate` : Fréquence d'échantillonnage (défaut : `44100`)
-- `-s, --sequential` : Désactive le traitement parallèle
+**Parameters:**
+- `input_folder` : Folder containing MP4 files (required)
+- `-o, --output` : Output folder (default: `input_folder/mp3_output`)
+- `-b, --bitrate` : Audio bitrate (default: `320k`)
+- `-r, --sample-rate` : Sample rate (default: `44100`)
+- `-s, --sequential` : Disable parallel processing
 
-**Exemple de sortie :**
+**Example output:**
 ```
 ==================================================
-🎬 MP4 to MP3 Converter - Haute Qualité
+🎬 MP4 to MP3 Converter - High Quality
 ==================================================
-✅ FFmpeg détecté
+✅ FFmpeg detected
 
-📂 Dossier source: D:\Videos
-📁 Dossier sortie: D:\Videos\mp3_output
-🎵 Fichiers à convertir: 25
-🎚️  Qualité: 320k @ 44100Hz
-⚡ Mode parallèle
+📂 Source folder: D:\Videos
+📁 Output folder: D:\Videos\mp3_output
+🎵 Files to convert: 25
+🎚️  Quality: 320k @ 44100Hz
+⚡ Parallel mode
 --------------------------------------------------
 ✅ video1.mp4 → video1.mp3
 ✅ video2.mp4 → video2.mp3
 ...
 
 ==================================================
-📊 RÉSUMÉ
+📊 SUMMARY
 ==================================================
-   Total:    25 fichier(s)
-   Réussis:  25 ✅
-   Échoués:  0 ❌
+   Total:     25 file(s)
+   Succeeded: 25 ✅
+   Failed:    0 ❌
 
-✨ Conversion terminée avec succès!
+✨ Conversion completed successfully!
 ```
 
 ---
 
-### 2. Rechercher sur YouTube
+### 2. Search on YouTube
 
-**Recherche depuis noms de fichiers MP4 :**
+**Search from MP4 file names:**
 ```bash
-python youtube_search.py /chemin/vers/videos
+python youtube_search.py /path/to/videos
 ```
 
-**Avec fichier de sortie personnalisé :**
+**With custom output file:**
 ```bash
-python youtube_search.py /chemin/vers/videos mes_liens.txt
+python youtube_search.py /path/to/videos my_links.txt
 ```
 
-**Paramètres :**
-- `dossier_mp4` : Dossier contenant les MP4 (obligatoire)
-- `fichier_sortie.txt` : Nom du fichier de sortie (défaut : `youtube_links.txt`)
+**Parameters:**
+- `dossier_mp4` : Folder containing MP4 files (required)
+- `fichier_sortie.txt` : Output file name (default: `youtube_links.txt`)
 
-**Exemple de sortie :**
+**Example output:**
 ```
 ============================================================
-🔍 Recherche YouTube à partir des noms de fichiers MP4
+🔍 YouTube Search from MP4 file names
 ============================================================
 
-📂 Dossier: D:\Downloads\videos\leger
-🎵 Fichiers trouvés: 15
-📄 Fichier de sortie: youtube_links.txt
+📂 Folder: D:\Downloads\videos\leger
+🎵 Files found: 15
+📄 Output file: youtube_links.txt
 ------------------------------------------------------------
 
-[1/15] 🔎 Recherche: Livre audio - Le Petit Prince.mp4...
+[1/15] 🔎 Searching: Livre audio - Le Petit Prince.mp4...
     Query: Livre audio Le Petit Prince...
-    ✅ Trouvé: https://www.youtube.com/watch?v=xxxxx
+    ✅ Found: https://www.youtube.com/watch?v=xxxxx
 
-[2/15] 🔎 Recherche: Audio - Les Misérables.mp4...
+[2/15] 🔎 Searching: Audio - Les Misérables.mp4...
     Query: Audio Les Misérables...
-    ✅ Trouvé: https://www.youtube.com/watch?v=yyyyy
+    ✅ Found: https://www.youtube.com/watch?v=yyyyy
 
 ...
 
 ============================================================
-📊 RÉSUMÉ
+📊 SUMMARY
 ============================================================
-   Total fichiers:  15
-   Liens trouvés:   13 ✅
-   Non trouvés:     2 ❌
+   Total files:   15
+   Links found:   13 ✅
+   Not found:     2 ❌
 
-✅ Fichier complet: youtube_links.txt
-✅ Liens uniquement: youtube_links_links_only.txt
+✅ Complete file: youtube_links.txt
+✅ Links only: youtube_links_links_only.txt
 ```
 
-**Fichiers générés :**
-- `youtube_links.txt` : Tous les résultats (avec commentaires pour non trouvés)
-- `youtube_links_links_only.txt` : Uniquement les liens valides
+**Generated files:**
+- `youtube_links.txt` : All results (with comments for not found)
+- `youtube_links_links_only.txt` : Valid links only
 
 ---
 
-### 3. Télécharger depuis YouTube
+### 3. Download from YouTube
 
-**Téléchargement depuis fichier de liens :**
+**Download from link file:**
 ```bash
 python download_mp3.py youtube_links.txt
 ```
 
-**Avec dossier de sortie personnalisé :**
+**With custom output folder:**
 ```bash
 python download_mp3.py youtube_links.txt D:/Downloads/mp3
 ```
 
-**Paramètres :**
-- `fichier_liens.txt` : Fichier contenant les liens YouTube (obligatoire)
-- `dossier_sortie` : Dossier de destination (défaut : `./mp3_downloads`)
+**Parameters:**
+- `fichier_liens.txt` : File containing YouTube links (required)
+- `dossier_sortie` : Destination folder (default: `./mp3_downloads`)
 
-**Format du fichier de liens :**
+**Link file format:**
 ```txt
-# Mes vidéos YouTube
+# My YouTube videos
 https://www.youtube.com/watch?v=xxxxx
 https://www.youtube.com/watch?v=yyyyy
-# Commentaires ignorés
+# Comments are ignored
 https://www.youtube.com/watch?v=zzzzz
 ```
 
-**Exemple de sortie :**
+**Example output:**
 ```
 ============================================================
-🎵 Téléchargement YouTube → MP3
+🎵 YouTube Download → MP3
 ============================================================
 
-📄 Fichier source: youtube_links.txt
-📁 Dossier sortie: D:\Downloads\mp3
-🔗 Liens à télécharger: 10
+📄 Source file: youtube_links.txt
+📁 Output folder: D:\Downloads\mp3
+🔗 Links to download: 10
 ------------------------------------------------------------
 
-[1/10] ⬇️  Téléchargement...
+[1/10] ⬇️  Downloading...
     URL: https://www.youtube.com/watch?v=xxxxx
-    ✅ Succès!
+    ✅ Success!
 
-[2/10] ⬇️  Téléchargement...
+[2/10] ⬇️  Downloading...
     URL: https://www.youtube.com/watch?v=yyyyy
-    ✅ Succès!
+    ✅ Success!
 
 ...
 
 ============================================================
-📊 RÉSUMÉ
+📊 SUMMARY
 ============================================================
-   Total:    10
-   Réussis:  9 ✅
-   Échoués:  1 ❌
+   Total:     10
+   Succeeded: 9 ✅
+   Failed:    1 ❌
 
-📁 Fichiers MP3 dans: D:\Downloads\mp3
+📁 MP3 files in: D:\Downloads\mp3
 
-💾 Liens échoués sauvegardés dans: failed_downloads.txt
+💾 Failed links saved in: failed_downloads.txt
 
-✨ Téléchargement terminé!
+✨ Download complete!
 ```
 
 ---
 
-## 🔄 Workflow complet
+## 🔄 Complete Workflow
 
-**Cas d'usage : Vous avez des MP4 locaux et voulez retrouver les sources YouTube pour re-télécharger en meilleure qualité**
+**Use case: You have local MP4 files and want to find YouTube sources to re-download in better quality**
 
 ```bash
-# 1. Rechercher les vidéos YouTube correspondantes
+# 1. Search for matching YouTube videos
 python youtube_search.py D:/Videos/livres_audio youtube_links.txt
 
-# 2. Télécharger les MP3 depuis YouTube (meilleure qualité)
+# 2. Download MP3 from YouTube (better quality)
 python download_mp3.py youtube_links_links_only.txt D:/Music/audiobooks
 
-# 3. (Optionnel) Convertir d'autres MP4 locaux
+# 3. (Optional) Convert other local MP4 files
 python audio_converter.py D:/Videos/autres -o D:/Music/converted
 ```
 
-**Cas d'usage : Conversion batch simple**
+**Use case: Simple batch conversion**
 
 ```bash
-# Convertir tous vos MP4 en MP3 320kbps
+# Convert all your MP4 files to 320kbps MP3
 python audio_converter.py D:/Downloads/videos
 ```
 
 ---
 
-## ⚙️ Configuration avancée
+## ⚙️ Advanced Configuration
 
-### Parallélisation
+### Parallelization
 
-Par défaut, `audio_converter.py` utilise **50 workers** en parallèle.
+By default, `audio_converter.py` uses **50 workers** in parallel.
 
-**Modifier dans le code :**
+**Modify in code:**
 ```python
-# audio_converter.py, ligne 19
-MAX_WORKERS = 20  # Réduire pour machines moins puissantes
+# audio_converter.py, line 19
+MAX_WORKERS = 20  # Reduce for less powerful machines
 ```
 
-**Ou désactiver :**
+**Or disable:**
 ```bash
 python audio_converter.py /videos --sequential
 ```
 
-### Qualité audio
+### Audio Quality
 
-**Bitrates recommandés :**
-- `128k` : Qualité acceptable, fichiers légers
-- `192k` : Bonne qualité
-- `256k` : Très bonne qualité
-- `320k` : Qualité maximale MP3 (par défaut)
+**Recommended bitrates:**
+- `128k` : Acceptable quality, lightweight files
+- `192k` : Good quality
+- `256k` : Very good quality
+- `320k` : Maximum MP3 quality (default)
 
-**Sample rates courants :**
-- `44100` : Standard CD (par défaut)
-- `48000` : Standard professionnel
-- `96000` : Hi-Res audio (fichiers volumineux)
+**Common sample rates:**
+- `44100` : CD standard (default)
+- `48000` : Professional standard
+- `96000` : Hi-Res audio (large files)
 
-### Rate limiting YouTube
+### YouTube Rate Limiting
 
-`youtube_search.py` inclut une pause de **1 seconde** entre requêtes pour éviter les blocages.
+`youtube_search.py` includes a **1 second** pause between requests to avoid blocking.
 
-**Modifier dans le code :**
+**Modify in code:**
 ```python
-# youtube_search.py, ligne 134
-time.sleep(1)  # Augmenter si nécessaire
+# youtube_search.py, line 134
+time.sleep(1)  # Increase if necessary
 ```
 
 ---
 
-## 🐛 Dépannage
+## 🐛 Troubleshooting
 
-### Erreur : "FFmpeg n'est pas installé"
-**Solution :** Installer FFmpeg (voir [Prérequis](#-prérequis))
+### Error: "FFmpeg is not installed"
+**Solution:** Install FFmpeg (see [Prerequisites](#-prerequisites))
 
-### Erreur : "yt-dlp n'est pas installé"
-**Solution :**
+### Error: "yt-dlp is not installed"
+**Solution:**
 ```bash
 pip install yt-dlp
 ```
 
-### Erreur : "Cannot read property of undefined" ou caractères bizarres
-**Solution :** Le script gère déjà l'UTF-8, mais sur Windows :
+### Error: "Cannot read property of undefined" or weird characters
+**Solution:** The script already handles UTF-8, but on Windows:
 ```bash
-chcp 65001  # Active UTF-8 dans PowerShell
+chcp 65001  # Enable UTF-8 in PowerShell
 python download_mp3.py ...
 ```
 
-### Téléchargement YouTube échoue (429 Too Many Requests)
-**Solution :** Attendre quelques minutes, puis relancer avec le fichier `failed_downloads.txt`
+### YouTube download fails (429 Too Many Requests)
+**Solution:** Wait a few minutes, then restart with the `failed_downloads.txt` file
 
-### Conversion très lente
-**Solution :** 
-- Vérifier que le mode parallèle est actif (pas de `--sequential`)
-- Réduire `MAX_WORKERS` si CPU surchargé
-- Vérifier espace disque disponible
+### Conversion very slow
+**Solution:** 
+- Verify that parallel mode is active (no `--sequential`)
+- Reduce `MAX_WORKERS` if CPU is overloaded
+- Check available disk space
 
 ---
 
 ## 🤝 Contributing
 
-Les contributions sont les bienvenues ! 
+Contributions are welcome! 
 
-**Processus :**
-1. Fork le projet
-2. Créer une branche (`git checkout -b feature/AmazingFeature`)
-3. Commit vos changements (`git commit -m 'Add AmazingFeature'`)
-4. Push sur la branche (`git push origin feature/AmazingFeature`)
-5. Ouvrir une Pull Request
+**Process:**
+1. Fork the project
+2. Create a branch (`git checkout -b feature/AmazingFeature`)
+3. Commit your changes (`git commit -m 'Add AmazingFeature'`)
+4. Push to the branch (`git push origin feature/AmazingFeature`)
+5. Open a Pull Request
 
-**Guidelines :**
-- Code Python 3.8+ avec type hints
-- Docstrings pour toutes les fonctions publiques
-- Tests unitaires pour nouvelles fonctionnalités
-- Suivre PEP 8 (formatage avec `black`)
+**Guidelines:**
+- Python 3.8+ code with type hints
+- Docstrings for all public functions
+- Unit tests for new features
+- Follow PEP 8 (formatting with `black`)
 
 ---
 
 ## 📄 License
 
-Distribué sous licence **MIT**. Voir [LICENSE](LICENSE) pour plus d'informations.
+Distributed under **MIT** license. See [LICENSE](LICENSE) for more information.
 
 ---
 
-## 👨‍💻 Auteur
+## 👨‍💻 Author
 
 **[A. DERA](https://github.com/a-dera)**
 
 ---
 
-## 🙏 Remerciements
+## 🙏 Acknowledgments
 
-- [FFmpeg](https://ffmpeg.org/) - Le couteau suisse du multimedia
-- [yt-dlp](https://github.com/yt-dlp/yt-dlp) - Fork amélioré de youtube-dl
-- Communauté Python open-source
+- [FFmpeg](https://ffmpeg.org/) - The Swiss Army knife of multimedia
+- [yt-dlp](https://github.com/yt-dlp/yt-dlp) - Enhanced fork of youtube-dl
+- Python open-source community
 
 ---
 
-## 📊 Statistiques
+## 📊 Statistics
 
 ![GitHub stars](https://img.shields.io/github/stars/a-dera/audio_converter?style=social)
 ![GitHub forks](https://img.shields.io/github/forks/a-dera/audio_converter?style=social)
@@ -443,4 +443,4 @@ Distribué sous licence **MIT**. Voir [LICENSE](LICENSE) pour plus d'information
 
 ---
 
-**⭐ Si ce projet vous aide, n'hésitez pas à lui donner une étoile !**
+**⭐ If this project helps you, feel free to give it a star!**
